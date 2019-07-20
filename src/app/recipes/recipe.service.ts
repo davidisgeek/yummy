@@ -9,7 +9,8 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
-    new Recipe('Butter chicken',
+    new Recipe(
+      'Butter chicken',
       'Healthy version of your favourite Friday night chicken curry.',
       'https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2017/01/butter-chicken.jpg?itok=eE_5ufkS',
       [
@@ -21,7 +22,8 @@ export class RecipeService {
         new Ingredient('Natural yogurt', 1)
       ]
     ),
-    new Recipe('Classic lasagne',
+    new Recipe(
+      'Classic lasagne',
       'Kids will love it!',
       'https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe_images/classic-lasange.jpg?itok=aYJg59N3',
       [
@@ -47,6 +49,10 @@ export class RecipeService {
 
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  getRecipe(id: number): Recipe {
+    return this.recipes[id];
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
