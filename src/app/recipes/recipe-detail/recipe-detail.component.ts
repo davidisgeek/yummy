@@ -15,6 +15,8 @@ export class RecipeDetailComponent implements OnInit {
   constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    // This subscription gets cleaned up because it's an observable managed by Angular.
+    //In custom observables you need to do the clean up work.
     this.route.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.recipe = this.recipeService.getRecipe(this.id);
